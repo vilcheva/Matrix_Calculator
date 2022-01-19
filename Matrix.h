@@ -9,7 +9,10 @@ struct Matrix
 	void enterData();
 	void MultiplyWithScalar(float scalar);
 	void DevideWithScalar(float scalar);
+	void outputData();
 	Matrix MartixTransposition();
+	Matrix SumOfTwoMatrices(Matrix A, Matrix B);
+	Matrix MultiplicationOfTwoMatrices(Matrix A, Matrix B);
 
 
 };
