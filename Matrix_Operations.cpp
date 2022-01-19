@@ -41,3 +41,23 @@ void Matrix::DevideWithScalar(float scalar)
 		}
 	}
 }
+Matrix Matrix::MartixTransposition()
+{
+	Matrix transponedArray;
+	transponedArray.columns = rows;
+	transponedArray.rows = columns;
+	float** newArray = new float* [transponedArray.rows];
+	for (int i = 0; i < transponedArray.rows; i++)
+	{
+		newArray[i] = new float[transponedArray.columns];
+	}
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < columns; j++)
+		{
+			newArray[j][i] = data[i][j];
+		}
+	}
+	transponedArray.data = newArray;
+	return transponedArray;
+}
