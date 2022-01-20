@@ -7,9 +7,11 @@ struct Matrix
 	float** data;
 
 	void enterData();
-	void MultiplyWithScalar(float scalar);
-	void DevideWithScalar(float scalar);
 	void outputData();
+	void FillingOfAMatrix(int number);
+	Matrix MultiplyWithScalar(float scalar);
+	Matrix DevideWithScalar(float scalar);
+	Matrix MakeANewMatrix(unsigned rows, unsigned columns);
 	Matrix MartixTransposition();
 	Matrix SumOfTwoMatrices(Matrix A, Matrix B);
 	Matrix MultiplicationOfTwoMatrices(Matrix A, Matrix B);
