@@ -1,3 +1,18 @@
+/**
+*
+* Solution to course project # 11
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2021/2022
+*
+* @author Velichka Ilcheva
+* @idnumber 8MI0600051
+* @compiler VC
+*
+* <file with created structure and function declaration>
+*
+*/
+
 #pragma once
 
 struct Matrix
@@ -15,6 +30,4 @@ struct Matrix
 	Matrix MartixTransposition();
 	Matrix SumOfTwoMatrices(Matrix A, Matrix B);
 	Matrix MultiplicationOfTwoMatrices(Matrix A, Matrix B);
-
-
 };

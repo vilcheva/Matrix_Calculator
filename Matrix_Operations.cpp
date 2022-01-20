@@ -1,3 +1,17 @@
+/**
+*
+* Solution to course project # 11
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2021/2022
+*
+* @author Velichka Ilcheva
+* @idnumber 8MI0600051
+* @compiler VC
+*
+* <file with the implementation of the necessary functions>
+*
+*/
 #include "Matrix.h"
 #include <iostream>
 
@@ -99,9 +113,7 @@ Matrix Matrix::SumOfTwoMatrices(Matrix A, Matrix B)
 {
 	Matrix result = MakeANewMatrix(A.rows, A.columns);
 	result.FillingOfAMatrix(0);
-	if (A.rows != B.rows || A.columns != B.columns)
-		cout << "Both matrices must have an equal number of columns and an equal number of rows." << endl;
-	else
+	if (A.rows == B.rows && A.columns == B.columns)
 	{
 		for (unsigned i = 0; i < A.rows; i++)
 		{
@@ -117,11 +129,7 @@ Matrix Matrix::MultiplicationOfTwoMatrices(Matrix A, Matrix B)
 {
 	Matrix result = MakeANewMatrix(A.rows, B.columns);
 	result.FillingOfAMatrix(0);
-	if (A.columns != B.rows)
-	{
-		cout << "The number of columns in the first matrix must be equal to the number of rows in the second." << endl;
-	}
-	else
+	if (A.columns == B.rows)
 	{
 		for (unsigned i = 0; i < A.rows; i++)
 		{
