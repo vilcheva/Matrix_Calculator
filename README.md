@@ -18,5 +18,5 @@
 6.The result of the operation is displayed on the console.\
 7.You can import new commands until you select 0 as the command number.
 
-###Example for Input and Result
+### Example for Input and Result
 ![Screenshot](example.bmp)
