@@ -17,3 +17,6 @@
 5.You receive a message when you enter incorrect data.\
 6.The result of the operation is displayed on the console.\
 7.You can import new commands until you select 0 as the command number.
+
+
+![Screenshot](example.bmp)
