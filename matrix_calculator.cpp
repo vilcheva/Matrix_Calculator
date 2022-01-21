@@ -27,7 +27,7 @@ void Menu()
 	cout << "3.Find the division of a matrix by a scalar." << endl;
 	cout << "4.Find the multiplication of a matrix by a matrix." << endl;
 	cout << "5.Finding the transposed matrix." << endl;
-	cout << "6.Finging the determinant of a matrix." << endl;
+	cout << "6.Finding the determinant of a matrix." << endl;
 }
 
 int main()
@@ -102,7 +102,10 @@ int main()
 		}
 		if (command >= 1 && command <= 5)
 			result.outputData();
-	}
 
+	}
+	A.DeleteData();
+	B.DeleteData();
+	result.DeleteData();
 }
 

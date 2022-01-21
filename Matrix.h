@@ -32,6 +32,7 @@ struct Matrix
 	Matrix MartixTransposition();
 	Matrix SumOfTwoMatrices(Matrix A, Matrix B);
 	Matrix MultiplicationOfTwoMatrices(Matrix A, Matrix B);
+	void DeleteData();
 
 
 };

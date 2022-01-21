@@ -115,6 +115,7 @@ Matrix Matrix::SumOfTwoMatrices(Matrix A, Matrix B)
 Matrix Matrix::MultiplicationOfTwoMatrices(Matrix A, Matrix B)
 {
 	Matrix result = MakeANewMatrix(A.rows, B.columns);
+	result.FillingOfAMatrix(0);
 	if (A.columns == B.rows)
 	{
 		for (unsigned i = 0; i < A.rows; i++)
@@ -196,4 +197,12 @@ float Matrix::FindDeterminant()
 	else
 		return FindSubmatrixAndDeterminant();
 
+}
+void Matrix::DeleteData()
+{
+	for (unsigned i = 0; i < rows; i++)
+	{
+		delete[] data[i];
+	}
+	delete[] data;
 }
