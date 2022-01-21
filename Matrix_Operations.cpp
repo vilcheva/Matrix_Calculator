@@ -23,6 +23,7 @@ void Matrix::enterData()
 	cin >> rows;
 	cout << "Enter columns: ";
 	cin >> columns;
+	cout << "Enter data: ";
 	data = new float* [rows];
 	for (unsigned i = 0; i < rows; i++)
 	{
@@ -35,6 +36,7 @@ void Matrix::enterData()
 }
 void Matrix::outputData()
 {
+	cout << "Result is: " << endl;
 	for (unsigned i = 0; i < rows; i++)
 	{
 		cout << '(';
@@ -83,23 +85,9 @@ Matrix Matrix::MultiplyWithScalar(float scalar)
 	}
 	return result;
 }
-Matrix Matrix::DevideWithScalar(float scalar)
-{
-	Matrix result = MakeANewMatrix(rows, columns);
-	result.FillingOfAMatrix(1);
-	for (int i = 0; i < rows; i++)
-	{
-		for (int j = 0; j < columns; j++)
-		{
-			result.data[i][j] = data[i][j] / scalar;
-		}
-	}
-	return result;
-}
 Matrix Matrix::MartixTransposition()
 {
 	Matrix transponedArray = MakeANewMatrix(columns, rows);
-	transponedArray.FillingOfAMatrix(0);
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < columns; j++)
@@ -112,7 +100,6 @@ Matrix Matrix::MartixTransposition()
 Matrix Matrix::SumOfTwoMatrices(Matrix A, Matrix B)
 {
 	Matrix result = MakeANewMatrix(A.rows, A.columns);
-	result.FillingOfAMatrix(0);
 	if (A.rows == B.rows && A.columns == B.columns)
 	{
 		for (unsigned i = 0; i < A.rows; i++)
@@ -128,7 +115,6 @@ Matrix Matrix::SumOfTwoMatrices(Matrix A, Matrix B)
 Matrix Matrix::MultiplicationOfTwoMatrices(Matrix A, Matrix B)
 {
 	Matrix result = MakeANewMatrix(A.rows, B.columns);
-	result.FillingOfAMatrix(0);
 	if (A.columns == B.rows)
 	{
 		for (unsigned i = 0; i < A.rows; i++)
@@ -143,4 +129,71 @@ Matrix Matrix::MultiplicationOfTwoMatrices(Matrix A, Matrix B)
 		}
 	}
 	return result;
+}
+float Matrix::FindDeterminantOfM3()
+{
+	return data[0][0] * (data[1][1] * data[2][2] - data[1][2] * data[2][1]) + data[0][1] *
+		(data[1][2] * data[2][0] - data[1][0] * data[2][2]) + data[0][2] *
+		(data[1][0] * data[2][1] - data[1][1] * data[2][0]);
+}
+float Matrix::FindSubmatrixAndDeterminant()
+{
+	Matrix submatrix;
+	submatrix = MakeANewMatrix(rows - 1, columns - 1);
+	unsigned p = 0;
+	unsigned q = 0;
+	unsigned x = 0;
+	unsigned y = 0;
+	float numberForMakingZero;
+	float determinant;
+	while (data[p][q] == 0)
+	{
+		if (q == columns - 1)
+		{
+			p++;
+			q = 0;
+		}
+		else
+			q++;
+	}
+	for (unsigned i = 0; i < rows; i++)
+	{
+		if (p == i)
+			continue;
+		numberForMakingZero = -1 * data[i][q] / data[p][q];
+		for (unsigned j = 0; j < columns; j++)
+		{
+			if (j == q)
+				continue;
+			else
+			{
+				submatrix.data[x][y] = data[i][j] + data[p][j] * numberForMakingZero;
+				if (y == columns - 2)
+				{
+					x++; y = 0;
+				}
+				else
+					y++;
+			}
+		}
+	}
+	determinant = data[p][q] * submatrix.FindDeterminantOfM3();
+	if ((p + q) % 2 == 0)
+		return determinant;
+	else
+		return -1 * determinant;
+
+}
+float Matrix::FindDeterminant()
+{
+	float determinant;
+	if (rows == 1 && columns == 1)
+		return data[0][0];
+	else if (rows == 2 && columns == 2)
+		return (data[0][0] * data[1][1]) - (data[0][1] * data[1][0]);
+	else if (rows == 3 && columns == 3)
+		return FindDeterminantOfM3();
+	else
+		return FindSubmatrixAndDeterminant();
+
 }

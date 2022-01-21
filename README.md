@@ -7,7 +7,8 @@
 2.Multiplication by a matrix with a matrix.\
 3.Division of a matrix by a scalar.\
 4.Matrix transposition.\
-5.Sum of two matrices.
+5.Sum of two matrices.\
+6.Finding the determinant of a matrix.
 
 ### Instructions for using the matrix calculator
 1.Enter a command number.\

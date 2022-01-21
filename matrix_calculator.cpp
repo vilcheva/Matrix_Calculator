@@ -26,7 +26,8 @@ void Menu()
 	cout << "2.Find the multiplication of a matrix by a scalar." << endl;
 	cout << "3.Find the division of a matrix by a scalar." << endl;
 	cout << "4.Find the multiplication of a matrix by a matrix." << endl;
-	cout << "5.Finding a transposed matrix." << endl;
+	cout << "5.Finding the transposed matrix." << endl;
+	cout << "6.Finging the determinant of a matrix." << endl;
 }
 
 int main()
@@ -49,7 +50,7 @@ int main()
 			B.enterData();
 			if (A.rows != B.rows || A.columns != B.columns)
 			{
-				cout << "!!!Wrong size." << endl;
+				cout << "!!!Wrong size" << endl;
 				continue;
 			}
 			result = A.SumOfTwoMatrices(A, B);
@@ -69,7 +70,7 @@ int main()
 				cout << "Cannot be divided by 0!" << endl;
 				continue;
 			}
-			result = A.DevideWithScalar(scalar);
+			result = A.MultiplyWithScalar(1 / scalar);
 			break;
 		}
 		case 4: {cout << "The number of columns in the first matrix must be equal to the number of rows in the second." << endl;
@@ -77,7 +78,7 @@ int main()
 			B.enterData();
 			if (A.columns != B.rows)
 			{
-				cout << "!!!Wrong size." << endl;
+				cout << "!!!Wrong size" << endl;
 				continue;
 			}
 			result = A.MultiplicationOfTwoMatrices(A, B);
@@ -85,6 +86,16 @@ int main()
 		}
 		case 5: {A.enterData();
 			result = A.MartixTransposition();
+			break; }
+		case 6: {cout << "Columns and rows must be equal and must be between 1 and 4 and." << endl;
+			A.enterData();
+			if (A.rows != A.columns || A.rows > 4)
+			{
+				cout << "!!!Wrong size" << endl;
+				continue;
+			}
+			cout << "The determinant is: ";
+			cout << A.FindDeterminant() << endl;
 			break; }
 		default: cout << "Wrong command!" << endl;
 			break;
